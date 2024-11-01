@@ -26,6 +26,14 @@ func main() {
 
 	//counts := 0
 	var isPrime bool = true // 가독성 up, 메모리 down
+	if n <= 1 {
+		isPrime = false
+	} else if n == 2 {
+		isPrime = true
+	} else if n%2 == 0 { //2를 제외한 짝수는 모두 소수가 아님
+		isPrime = false
+	}
+
 	j := 2
 	for j <= int(math.Sqrt(float64(n))) {
 		if n%j == 0 {
