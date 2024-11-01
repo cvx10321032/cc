@@ -29,7 +29,9 @@ func main() {
 		if n%j == 0 {
 			//counts = counts + 1
 			isPrime = false // 더하기 연산 제거
+			break
 		}
+		fmt.Printf("%d ", j)
 		j++
 	}
 
