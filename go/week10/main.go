@@ -4,14 +4,38 @@ import (
 	"bufio"
 	"fmt"
 	"log"
-	"math"
 	"os"
 	"strconv"
 	"strings"
 )
 
+func isPrime(n int) bool {
+	//var isPrime bool = true
+	if n <= 1 {
+		//isPrime = false
+		return false
+	} else if n == 2 {
+		//isPrime = true
+		return true
+	} else if n%2 == 0 {
+		//isPrime = false
+		return false
+	} else {
+		j := 3
+		for j*j <= n {
+			if n%j == 0 {
+				// isPrime = false
+				// break
+				return false
+			}
+			fmt.Printf("%d ", j)
+			j = j + 2
+		}
+	}
+	return true
+}
+
 func main() {
-	fmt.Printf("%f\n", math.Sqrt(19.0))
 	fmt.Print("Input number : ")
 	in := bufio.NewReader(os.Stdin)
 	i, err := in.ReadString('\n')
@@ -24,29 +48,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	//counts := 0
-	var isPrime bool = true // 가독성 up, 메모리 down
-	if n <= 1 {
-		isPrime = false
-	} else if n == 2 {
-		isPrime = true
-	} else if n%2 == 0 { //2를 제외한 짝수는 모두 소수가 아님
-		isPrime = false
-	}
-
-	j := 3
-	for j <= int(math.Sqrt(float64(n))) {
-		if n%j == 0 {
-			//counts = counts + 1
-			isPrime = false // 더하기 연산 제거
-			break
-		}
-		fmt.Printf("%d ", j)
-		j += 2
-	}
-
-	//if counts == 0 {
-	if isPrime { // == 비교 연산 제거
+	if isPrime(n) {
 		fmt.Printf("%d is prime number.", n)
 	} else {
 		fmt.Printf("%d is NOT prime number.", n)
