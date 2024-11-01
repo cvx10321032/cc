@@ -34,7 +34,7 @@ func main() {
 		isPrime = false
 	}
 
-	j := 2
+	j := 3
 	for j <= int(math.Sqrt(float64(n))) {
 		if n%j == 0 {
 			//counts = counts + 1
@@ -42,7 +42,7 @@ func main() {
 			break
 		}
 		fmt.Printf("%d ", j)
-		j++
+		j += 2
 	}
 
 	//if counts == 0 {
