@@ -1,30 +1,39 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"log"
+	"os"
+	"strconv"
+	"strings"
 )
 
-func paintNeeded(width float64, height float64) (float64, error) {
-	if width < 0 {
-		return 0, fmt.Errorf("a width of %0.2f is invalid", width)
-	}
-	if height < 0 {
-		return 0, fmt.Errorf("a height of %0.2f is invalid", height)
-	}
-	area := width * height
-	return area / 10.0, nil
-}
-
 func main() {
-	amount, err := paintNeeded(5.2, 3.5)
+	fmt.Print("Input number : ")
+	in := bufio.NewReader(os.Stdin)
+	i, err := in.ReadString('\n')
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("%0.2f liters needed\n", amount)
-	amount, err = paintNeeded(4.2, -3.0)
+	i = strings.TrimSpace(i)
+	n, err := strconv.Atoi(i)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("%0.2f liters needed\n", amount)
+
+	counts := 0
+	j := 1
+	for j <= n {
+		if n%j == 0 {
+			counts = counts + 1
+		}
+		j++
+	}
+
+	if counts == 2 {
+		fmt.Printf("%d is prime number.", n)
+	} else {
+		fmt.Printf("%d is NOT prime number.", n)
+	}
 }
