@@ -23,7 +23,7 @@ func main() {
 	}
 
 	counts := 0
-	j := 1
+	j := 1 //2로바꿈 안댐
 	for j <= n {
 		if n%j == 0 {
 			counts = counts + 1
