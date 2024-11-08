@@ -10,46 +10,46 @@ import (
 )
 
 func isPrime(n int) bool {
-	//var isPrime bool = true
 	if n <= 1 {
-		//isPrime = false
 		return false
 	} else if n == 2 {
-		//isPrime = true
 		return true
 	} else if n%2 == 0 {
-		//isPrime = false
 		return false
 	} else {
 		j := 3
 		for j*j <= n {
 			if n%j == 0 {
-				// isPrime = false
-				// break
 				return false
 			}
-			fmt.Printf("%d ", j)
+			//fmt.Printf("%d ", j)
 			j = j + 2
 		}
 	}
 	return true
 }
 
-func main() {
-	fmt.Print("Input number : ")
+func getInteger() int {
 	in := bufio.NewReader(os.Stdin)
-	i, err := in.ReadString('\n')
+	a, err := in.ReadString('\n')
 	if err != nil {
 		log.Fatal(err)
 	}
-	i = strings.TrimSpace(i)
-	n, err := strconv.Atoi(i)
+	a = strings.TrimSpace(a)
+	n, err := strconv.Atoi(a)
 	if err != nil {
 		log.Fatal(err)
 	}
-	for j := n1; j <= j2; j++ {
-		if isPrime(n) {
-			fmt.Printf("%d is prime number.", n)
+	return n
+}
+func main() {
+	fmt.Print("Input start number : ")
+	n1 := getInteger()
+	fmt.Print("Input end number : ")
+	n2 := getInteger()
+	for j := n1; j <= n2; j++ {
+		if isPrime(j) {
+			fmt.Printf("%d ", j)
 		}
 	}
 }
