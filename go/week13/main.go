@@ -2,23 +2,16 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 func main() {
-	var emptySlice []bool
-	emptySlice = make([]bool, 5)
-	fmt.Printf("%#v %d\n", emptySlice, len(emptySlice)) // []bool{nil}, 0 이면 아래에서 1
-
-	if len(emptySlice) == 0 {
-		emptySlice = append(emptySlice, true)
+	//fmt.Println(os.Args[1:], len(os.Args))
+	slices := os.Args[1:]
+	fmt.Println(slices[1])
+	for _, slice := range slices {
+		fmt.Println(slice)
 	}
-	fmt.Printf("%#v %d\n", emptySlice, len(emptySlice)) // []bool{true}, 1
-
-	var gpa [5]float64 = [5]float64{3.5, 4.1, 4.5, 3.9, 4.23}
-	gpa_slice := gpa[1:4] // 4.1, 4.5, 3.9
-	//gpa_slice[1] = 2.71
-	gpa[2] = 2.71
-	//gpa_slice = append(gpa_slice, 4.3) gpa[]의 길이 만큼만 넣으면 4.23이 4.3으로 바뀜 ))gpa_slice에는 당연히 바뀜
-	gpa_slice = append(gpa_slice, 4.3, 5.55) // 초과해서 넣으면 4.23을 바꾸지 않고 gpa_slice에만 추가
-	fmt.Println(len(gpa_slice), gpa_slice, gpa)
+	slices = append(slices, "forever", "!")
+	fmt.Println(slices, len(slices))
 }
