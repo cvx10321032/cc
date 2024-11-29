@@ -1,27 +1,24 @@
 package main
 
-import (
-	"fmt"
-	"os"
-	"reflect"
-)
-
-// func test(strs string) {
-func test(strs ...string) {
-	fmt.Println(strs, reflect.TypeOf(strs))
-}
+import "fmt"
 
 func main() {
-	//fmt.Println(os.Args[1:], len(os.Args))
-	slices := os.Args[1:]
-	fmt.Println(slices[1])
-	for _, slice := range slices {
-		fmt.Println(slice)
+	ages := make(map[string]int)
+
+	var name string
+	var age int
+
+	for {
+		fmt.Print("What's ur name? (exit to 'q') ")
+		fmt.Scanln(&name)
+		if name == "q" || name == "Q" {
+			break
+		}
+		fmt.Print("Ur age?")
+		fmt.Scanln(&age)
+		ages[name] = age
 	}
-	slices = append(slices, "forever", "!")
-	fmt.Println(slices, len(slices))
-	test("abc")
-	test("abc", "123")
-	test()
-	test("abc", "123", "inha")
+	for name, age := range ages {
+		fmt.Printf("%s is %d year old.\n", name, age)
+	}
 }
